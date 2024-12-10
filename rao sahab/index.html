@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cricket Match Scheduler</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Navigation Buttons -->
+        <div class="nav-buttons">
+            <button id="show-scheduler">Schedule Match</button>
+            <button id="show-history">View History</button>
+        </div>
+
+        <!-- Schedule Match Section -->
+        <div id="schedule-section" class="section">
+            <h1>CRICKET MATCH SHEDULER</h1>
+            <form id="match-form">
+                <label for="team1">Team 1 Name:</label>
+                <input type="text" id="team1" name="team1" placeholder="Enter Team 1 Name" required>
+
+                <label for="captain1">Team 1 Captain:</label>
+                <input type="text" id="captain1" name="captain1" placeholder="Enter Team 1 Captain" required>
+
+                <label for="team2">Team 2 Name:</label>
+                <input type="text" id="team2" name="team2" placeholder="Enter Team 2 Name" required>
+
+                <label for="captain2">Team 2 Captain:</label>
+                <input type="text" id="captain2" name="captain2" placeholder="Enter Team 2 Captain" required>
+
+                <label for="match-date">Match Date:</label>
+                <input type="date" id="match-date" name="match-date" required>
+
+                <label for="match-time">Match Time:</label>
+                <input type="time" id="match-time" name="match-time" required>
+
+                <label for="venue">Venue:</label>
+                <input type="text" id="venue" name="venue" placeholder="Enter Match Venue" required>
+
+                <button type="submit" id="submit-button">Schedule Match</button>
+            </form>
+
+            <div id="match-scheduled-message" class="hidden">
+                <h2>Match Scheduled!</h2>
+                <p id="match-details"></p>
+                <button id="schedule-again">Schedule Again</button>
+                <button id="print-match">Print Match Details</button>
+            </div>
+        </div>
+
+        <!-- Match History Section -->
+        <div id="history-section" class="section hidden">
+            <h1>Scheduled Match History</h1>
+            <ul id="match-history"></ul>
+            <button id="delete-history">Delete All History</button>
+            <button id="print-history">Print History</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
