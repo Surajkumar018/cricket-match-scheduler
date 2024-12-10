@@ -61,17 +61,33 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    // Generate a random winner
+    function predictWinner(team1, team2) {
+        const teams = [team1, team2];
+        const winner = teams[Math.floor(Math.random() * teams.length)];
+        return winner;
+    }
+
     // Handle form submission
     form.addEventListener("submit", function (event) {
         event.preventDefault();
 
         const team1 = document.getElementById("team1").value.trim();
+        const captain1 = document.getElementById("captain1").value.trim();
         const team2 = document.getElementById("team2").value.trim();
+        const captain2 = document.getElementById("captain2").value.trim();
         const matchDate = document.getElementById("match-date").value;
         const matchTime = document.getElementById("match-time").value;
         const venue = document.getElementById("venue").value.trim();
 
-        const matchInfo = `Match: ${team1} vs ${team2} on ${matchDate} at ${matchTime}, Venue: ${venue}`;
+        // Predict the winner
+        const predictedWinner = predictWinner(team1, team2);
+
+        const matchInfo = `
+            Match: ${team1} (Captain: ${captain1}) vs ${team2} (Captain: ${captain2}) 
+            Date: ${matchDate}, Time: ${matchTime}, Venue: ${venue} 
+            Predicted Winner: ${predictedWinner}
+        `;
 
         // Save match to localStorage
         const history = JSON.parse(localStorage.getItem("matchHistory")) || [];
@@ -79,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
         localStorage.setItem("matchHistory", JSON.stringify(history));
 
         // Display scheduled match details
-        matchDetails.textContent = matchInfo;
+        matchDetails.textContent = matchInfo.trim();
         matchScheduledMessage.classList.remove("hidden");
         form.reset(); // Clear the form fields
     });
